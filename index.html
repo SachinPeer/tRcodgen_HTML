@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Management System</h1>
+        
+        <div class="user-form">
+            <h2>Add New User</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="userName">Name:</label>
+                    <input type="text" id="userName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <!-- HTML BUG: Wrong input type - should be type="email" -->
+                    <input type="text" id="userEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userAge">Age:</label>
+                    <input type="number" id="userAge" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userRole">Role:</label>
+                    <select id="userRole" required>
+                        <option value="">Select Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                        <option value="moderator">Moderator</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="submitBtn">Add User</button>
+                <button type="button" id="clearBtn">Clear Form</button>
+            </form>
+        </div>
+        
+        <div class="user-list">
+            <h2>User List</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search users...">
+                <button type="button" id="searchBtn">Search</button>
+            </div>
+            
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <!-- Users will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
