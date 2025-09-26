@@ -89,8 +89,19 @@ function deleteUser(id) {
 }
 
 function editUser(id) {
-    // JS BUG: Edit button doesn't work - just shows alert
-    alert('Edit functionality not implemented yet!');
+    // Show error message on screen instead of popup
+    showErrorMessage('Edit functionality not implemented yet!');
+}
+
+function showErrorMessage(message) {
+    const errorDiv = document.getElementById('errorMessage');
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+    
+    // Auto-hide the error message after 5 seconds
+    setTimeout(() => {
+        errorDiv.style.display = 'none';
+    }, 5000);
 }
 
 function searchUsers() {
