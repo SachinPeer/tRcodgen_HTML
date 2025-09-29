@@ -67,6 +67,15 @@ button:hover {
     background: #007bff; /* Should be #6c757d (gray) */
 }
 
+/* CSS BUG: Buttons positioned at opposite corners - broken layout */
+#submitBtn {
+    float: left;
+}
+
+#clearBtn {
+    float: right;
+}
+
 .search-container {
     margin-bottom: 20px;
     display: flex;
@@ -92,7 +101,7 @@ th, td {
 th {
     background-color: #f8f9fa;
     font-weight: bold;
-    color: #f8f9fa; /* CSS BUG: Text color same as background - headers invisible */
+    color: #333;
 }
 
 .action-btn {
