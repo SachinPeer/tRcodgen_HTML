@@ -90,7 +90,7 @@ function deleteUser(id) {
 
 function editUser(id) {
     // Show error message on screen instead of popup
-    showErrorMessage('Edit functionality not implemented yet!');
+    showErrorMessage('Failed to edit');
 }
 
 function showErrorMessage(message) {

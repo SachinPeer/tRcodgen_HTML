@@ -92,7 +92,7 @@ th, td {
 th {
     background-color: #f8f9fa;
     font-weight: bold;
-    color: #333;
+    color: #f8f9fa; /* CSS BUG: Text color same as background - headers invisible */
 }
 
 .action-btn {
