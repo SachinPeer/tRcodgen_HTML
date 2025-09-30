@@ -24,25 +24,42 @@ function addUser() {
     const email = document.getElementById('userEmail').value.trim();
     const age = document.getElementById('userAge').value;
     const role = document.getElementById('userRole').value;
-    
+    const submitBtn = document.getElementById('submitBtn');
+    const editId = submitBtn.dataset.editId;
+
     // Basic validation
     if (!name || !email || !age || !role) {
         alert('Please fill in all fields');
         return;
     }
-    
-    const user = {
-        id: nextId++,
-        name: name,
-        email: email,
-        age: parseInt(age),
-        role: role
-    };
-    
-    users.push(user);
+
+    // Check if we're editing an existing user
+    if (editId) {
+        const userIndex = users.findIndex(u => u.id === parseInt(editId));
+        if (userIndex !== -1) {
+            users[userIndex].name = name;
+            users[userIndex].email = email;
+            users[userIndex].age = parseInt(age);
+            users[userIndex].role = role;
+            alert('User updated successfully!');
+        }
+        delete submitBtn.dataset.editId;
+        submitBtn.textContent = 'Add User';
+    } else {
+        // Adding new user
+        const user = {
+            id: nextId++,
+            name: name,
+            email: email,
+            age: parseInt(age),
+            role: role
+        };
+        users.push(user);
+        alert('User added successfully!');
+    }
+
     displayUsers();
     clearForm();
-    alert('User added successfully!');
 }
 
 function displayUsers(usersToDisplay = users) {
@@ -89,8 +106,25 @@ function deleteUser(id) {
 }
 
 function editUser(id) {
-    // Show error message on screen instead of popup
-    showErrorMessage('Failed to edit');
+    const user = users.find(u => u.id === id);
+    if (!user) {
+        showErrorMessage('User not found');
+        return;
+    }
+
+    // Populate form with user data
+    document.getElementById('userName').value = user.name;
+    document.getElementById('userEmail').value = user.email;
+    document.getElementById('userAge').value = user.age;
+    document.getElementById('userRole').value = user.role;
+
+    // Change submit button to update mode
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = 'Update User';
+    submitBtn.dataset.editId = id;
+
+    // Scroll to form
+    document.getElementById('userForm').scrollIntoView({ behavior: 'smooth' });
 }
 
 function showErrorMessage(message) {
