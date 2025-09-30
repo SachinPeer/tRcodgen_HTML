@@ -89,8 +89,20 @@ function deleteUser(id) {
 }
 
 function editUser(id) {
-    // Show error message on screen instead of popup
-    showErrorMessage('Failed to edit');
+    const user = users.find(u => u.id === id);
+    if (!user) {
+        showErrorMessage('User not found');
+        return;
+    }
+
+    // Populate form with user data
+    document.getElementById('userName').value = user.name;
+    document.getElementById('userEmail').value = user.email;
+    document.getElementById('userAge').value = user.age;
+    document.getElementById('userRole').value = user.role;
+
+    // Scroll to form
+    document.getElementById('userForm').scrollIntoView({ behavior: 'smooth' });
 }
 
 function showErrorMessage(message) {
