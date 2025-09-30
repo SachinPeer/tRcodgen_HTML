@@ -12,7 +12,7 @@ services:
     image: tr-codegen/user-management:latest
     container_name: tr-codegen-user-management
     ports:
-      - "${APP_PORT:-3000}:80"
+      - "3000:80"
     restart: unless-stopped
     networks:
       - tr-codegen-network
